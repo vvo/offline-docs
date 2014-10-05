@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+var http = require('http');
+
+var getPackages = require('../get-packages');
+var cwd = process.cwd();
+
+getPackages(cwd, function(err, packages) {
+  if (err) {
+    console.log(err.stack)
+    throw err;
+  }
+
+  var app = require('../app')(packages);
+
+  var server = http.createServer(app);
+  server.listen(5000);
+
+  server.on('listening', function serverStarted() {
+    console.log('Offline docs server listening on http://%s:%d', this.address().address, this.address().port);
+  });
+});
+

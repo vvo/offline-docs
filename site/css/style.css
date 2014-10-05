@@ -1,0 +1,36 @@
+body {
+  padding: 1em 2em;
+}
+
+.pure-g > a {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: .5em;
+}
+
+.pure-g > a > div {
+  background: rgba(84,36,55,.2);
+  padding: .5em;
+}
+
+.pure-g > a:link {
+  color: rgb(83,119,122);
+  text-decoration: none;
+}
+
+.pure-g > a:visited {
+  color: rgb(83,119,122);
+}
+
+.pure-g > a:hover > div {
+  background: rgb(236,208,120);
+}
+
+.pure-g > a:hover {
+  color: rgb(84,36,55);
+}
+
+pre {
+  background: #f7f7f7;
+}

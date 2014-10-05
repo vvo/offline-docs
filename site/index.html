@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Offline docs</title>
+  <link rel="stylesheet" href="/css/pure-min.css">
+  <link rel="stylesheet" href="/css/grids-responsive-min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.js.github.css">
+</head>
+<body>
+  <h1><a href="/">Offline docs</a></h1>
+
+ <div class="pure-g" id="packages-list" v-if="list">
+  <a class="pure-u-1 pure-u-sm-1-2 pure-u-lg-1-5" v-repeat="packages | orderBy name" href="./show/{{ name }}">
+    <div><h2>{{ name }}</h2> {{ version }}</div>
+  </a>
+</div>
+
+
+  <div v-if="detail" v-html="detail">
+
+  </div>
+
+  <script src="/bundle.js"></script>
+</body>
+</html>
