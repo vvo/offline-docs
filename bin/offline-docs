@@ -6,7 +6,6 @@ var cwd = process.cwd();
 
 getPackages(cwd, function(err, packages) {
   if (err) {
-    console.log(err.stack)
     throw err;
   }
 
