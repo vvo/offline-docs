@@ -1,6 +1,6 @@
 {
   "name": "offline-docs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Always get some documentation on the modules you use, even offline",
   "main": "index.js",
   "bin": {
