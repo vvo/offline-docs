@@ -9,7 +9,9 @@ function getPackages(baseDirectory, cb) {
 
   read(nodeModules)
     .then(findPackages)
-    .then(cb.bind(null, null))
+    .then(function(packages) {
+      cb(null, packages.filter(goodPackage));
+    })
     .catch(cb);
 }
 
@@ -74,12 +76,12 @@ function packageInfo(packageFiles, packageDirectory) {
     }
   });
 
-  if (!packageInfo.name && !packageInfo.readme) {
-    console.log(packageDirectory)
-  }
-
   if (!packageInfo.name && packageInfo.readme) {
     packageInfo.name = path.basename(packageDirectory)
+  }
+
+  if (!packageInfo.readme) {
+    packageInfo = null;
   }
 
   return packageInfo;
@@ -94,4 +96,8 @@ function absolutePath(directory) {
 
 function noBin(fileName) {
   return !/^\.bin$/.test(fileName);
+}
+
+function goodPackage(packageInfo) {
+  return packageInfo !== null;
 }
