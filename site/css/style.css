@@ -31,6 +31,8 @@ body {
   color: rgb(84,36,55);
 }
 
-pre {
-  background: #f7f7f7;
+.markdown-body {
+  min-width: 200px;
+  max-width: 790px;
+  padding: 30px;
 }

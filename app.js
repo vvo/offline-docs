@@ -7,11 +7,26 @@ module.exports = function(packages) {
   var serveStatic = require('serve-static');
   var staticFiles = serveStatic(path.join(__dirname, 'site'));
 
+  var renderer = new marked.Renderer();
+
   marked.setOptions({
+    gfm: true,
+    renderer: renderer,
     highlight: function (code) {
       return require('highlight.js').highlightAuto(code).value;
     }
   });
+
+  renderer.heading = function (text, level) {
+    var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+
+    return '<h' + level + '><a name="' +
+                  escapedText +
+                   '" class="anchor" href="#' +
+                   escapedText +
+                   '"><span class="octicon octicon-link"></span></a>' +
+                    text + '</h' + level + '>';
+  };
 
   var app = express();
   app.use(compression());
